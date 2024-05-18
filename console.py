@@ -1,23 +1,27 @@
 #!/usr/bin/python3
+"""This module contain the HBNB console"""
+
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
-    """
-    Simple command line for the
-    HBNB project.
-    """
+    """Command line interpreter HBNB"""
 
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
-    def do_quit(self, line):
-        """exit the Command line"""
-        exit()
-
-    def do_EOF(self, line):
-        """exits the Command line"""
+    def do_quit(self, args):
+        """Quit command to exit the console\n"""
         return True
+
+    def do_EOF(self, args):
+        """EOF command to exit the console\n"""
+        return True
+
+    def emptyline(self):
+        """Perform nothing when there's no commmand passed to the console"""
+        pass
 
 
 if __name__ == "__main__":
-    HBNBCommand().cmdloop()
+    comand = HBNBCommand()
+    comand.cmdloop()
