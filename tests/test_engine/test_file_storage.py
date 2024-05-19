@@ -11,7 +11,7 @@ from models.engine.file_storage import FileStorage
 
 class TestFileStorage_instantiation(unittest.TestCase):
     """
-    Unittests for testing instantiation of the FileStorage class.
+    Unittests for testing FileStorage class.
     """
 
     def test_FileStorage_instantiation_no_args(self):
@@ -61,10 +61,10 @@ class TestFileStorage_methods(unittest.TestCase):
             models.storage.all(None)
 
     def test_new(self):
-        my_base_model = BaseModel()
-        models.storage.new(my_base_model)
-        self.assertIn("BaseModel." + my_base_model.id, models.storage.all().keys())
-        self.assertIn(my_base_model, models.storage.all().values())
+        baseModel = BaseModel()
+        models.storage.new(baseModel)
+        self.assertIn("BaseModel." + baseModel.id, models.storage.all().keys())
+        self.assertIn(baseModel, models.storage.all().values())
 
     def test_new_with_args(self):
         with self.assertRaises(TypeError):
@@ -75,25 +75,25 @@ class TestFileStorage_methods(unittest.TestCase):
             models.storage.new(None)
 
     def test_save(self):
-        my_base_model = BaseModel()
-        models.storage.new(my_base_model)
+        baseModel = BaseModel()
+        models.storage.new(baseModel)
         models.storage.save()
         save_text = ""
         with open("file.json", "r") as f:
             save_text = f.read()
-            self.assertIn("BaseModel." + my_base_model.id, save_text)
+            self.assertIn("BaseModel." + baseModel.id, save_text)
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
             models.storage.save(None)
 
     def test_reload(self):
-        my_base_model = BaseModel()
-        models.storage.new(my_base_model)
+        baseModel = BaseModel()
+        models.storage.new(baseModel)
         models.storage.save()
         models.storage.reload()
         objs = FileStorage._FileStorage__objects
-        self.assertIn("BaseModel." + my_base_model.id, objs)
+        self.assertIn("BaseModel." + baseModel.id, objs)
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
