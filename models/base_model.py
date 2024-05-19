@@ -64,3 +64,12 @@ if __name__ == "__main__":
     print("JSON of myModel:")
     for i in modelJson.keys():
         print("\t{}: ({}) - {}".format(i, type(modelJson[i]), modelJson[i]))
+
+    print("--")
+    my_new_model = BaseModel(**modelJson)
+    print(my_new_model.id)
+    print(my_new_model)
+    print(type(my_new_model.created_at))
+
+    print("--")
+    print(myModel is my_new_model)
