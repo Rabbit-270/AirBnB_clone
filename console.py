@@ -15,23 +15,21 @@ class HBNBCommand(cmd.Cmd):
         Parse end-of-file-marker in the hbnb commnd line
         and return True to terminate the program
         '''
-        "Bye"
         return True
 
     def do_quit(self, line):
         '''
 exit the program
         '''
-        "Goodbye"
         return True
 
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def emptyline(self):
         '''
 Executed when no command is entered in the command line
         '''
-        return
+        pass
 
 
 if __name__ == "__main__":
