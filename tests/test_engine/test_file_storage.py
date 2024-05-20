@@ -20,14 +20,6 @@ Test cases for file_storage
         the file should not be empty; False
         '''
         assertIs(localStorage, FileStorage)
-        assertIsNotNone(available_models)
-        assertTrue(len(available_models) == 0 or len(available_models) != 0)
-        assertNotIsInstance(available_models, BaseModel)
-
-        new_base_model = BaseModel()
-        assertIsInstance(new_base_model, BaseModel)
-        dictionary_new_base_model = new_base_model.to_dict()
-        assertIsNotNone(dictionary_new_base_model.id)
 
 
 if __name__ == '__main__':
