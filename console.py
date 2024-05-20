@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         '''
 exit the program
         '''
-        exit()
+        return True
 
     prompt = "(hbnb)"
 
