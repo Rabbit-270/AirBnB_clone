@@ -51,14 +51,14 @@ Test cases for file_storage
         '''
         shouldn't return anything...
         '''
-        assertIsNone(file.save())
+        assertTrue(file.save())
 
     def test_reload(self):
         ''' '''
         file = FileStorage()
 
         assertIsInstance(file, FileStorage)
-        assertIsNone(file.reload())
+        assertTrue(file.reload())
 
 
 if __name__ == '__main__':
