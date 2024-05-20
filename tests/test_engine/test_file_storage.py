@@ -19,6 +19,7 @@ Test cases for file_storage
         '''
         the file should not be empty; False
         '''
+        assertIs(localStorage, FileStorage)
         assertIsNone(available_models)
         assertNotIsInstance(available_models, BaseModel)
 
@@ -28,14 +29,14 @@ Test cases for file_storage
         new object in the File
         '''
         compactFile = FileStorage()
+        assertIs(compactFile, FileStorage)
         testObject = BaseModel()
+        assertIs(testObject, BaseModel)
         prev = compactFile.all()
         compactFile.new(testObject)
         '''
         Make sure a BaseModel is being inserted
         '''
-        assertIs(testObject, BaseModel)
-        aasertIs(compactFile, BaseModel)
         assertIsNotNone(testObject.id)
         '''
         Make sure it is saved in the file/ __objects
@@ -49,18 +50,21 @@ Test cases for file_storage
         '''
         unittest the save method
         '''
-        file = FileStorage()
+        file_ = FileStorage()
+        assertIs(file_, FileStorage)
         '''
         shouldn't return anything...
         '''
-        assertTrue(file.save())
+        assertTrue(file_.save())
 
     def test_reload(self):
-        ''' '''
-        file = FileStorage()
+        '''
+        unittest reload
+        '''
+        file__ = FileStorage()
 
-        assertIsInstance(file, FileStorage)
-        assertTrue(file.reload())
+        assertIsInstance(file__, FileStorage)
+        assertTrue(file__.reload())
 
 
 if __name__ == '__main__':
