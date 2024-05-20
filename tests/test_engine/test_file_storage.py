@@ -29,6 +29,7 @@ Test cases for file_storage
         '''
         compactFile = FileStorage()
         testObject = BaseModel()
+        prev = compactFile.all()
         compactFile.new(testObject)
         '''
         Make sure a BaseModel is being inserted
@@ -42,6 +43,7 @@ Test cases for file_storage
         newFileStorage = compactFile.all()
         key = "{}.{}".format('BaseModel', testObject.id)
         assertIn(key, newFileStorage.keys())
+        assertNotEqual(prev, newFileStorage)
 
     def test_save(self):
         '''
