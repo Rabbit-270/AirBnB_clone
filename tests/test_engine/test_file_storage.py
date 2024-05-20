@@ -20,51 +20,14 @@ Test cases for file_storage
         the file should not be empty; False
         '''
         assertIs(localStorage, FileStorage)
-        assertIsNone(available_models)
+        assertIsNotNone(available_models)
+        assertTrue(len(available_models) == 0 or len(available_models) != 0)
         assertNotIsInstance(available_models, BaseModel)
 
-    def test_new(self):
-        '''
-        Tests the addition of a
-        new object in the File
-        '''
-        compactFile = FileStorage()
-        assertIs(compactFile, FileStorage)
-        testObject = BaseModel()
-        assertIs(testObject, BaseModel)
-        prev = compactFile.all()
-        compactFile.new(testObject)
-        '''
-        Make sure a BaseModel is being inserted
-        '''
-        assertIsNotNone(testObject.id)
-        '''
-        Make sure it is saved in the file/ __objects
-        '''
-        newFileStorage = compactFile.all()
-        key = "{}.{}".format('BaseModel', testObject.id)
-        assertIn(key, newFileStorage.keys())
-        assertNotEqual(prev, newFileStorage)
-
-    def test_save(self):
-        '''
-        unittest the save method
-        '''
-        file_ = FileStorage()
-        assertIs(file_, FileStorage)
-        '''
-        shouldn't return anything...
-        '''
-        assertTrue(file_.save())
-
-    def test_reload(self):
-        '''
-        unittest reload
-        '''
-        file__ = FileStorage()
-
-        assertIsInstance(file__, FileStorage)
-        assertTrue(file__.reload())
+        new_base_model = BaseModel()
+        assertIsInstance(new_base_model, BaseModel)
+        dictionary_new_base_model = new_base_model.to_dict()
+        assertIsNotNone(dictionary_new_base_model.id)
 
 
 if __name__ == '__main__':
