@@ -33,16 +33,32 @@ Test cases for file_storage
         '''
         Make sure a BaseModel is being inserted
         '''
+        assertIs(testObject, BaseModel)
+        aasertIs(compactFile, BaseModel)
         assertIsNotNone(testObject.id)
         '''
         Make sure it is saved in the file/ __objects
         '''
         newFileStorage = compactFile.all()
-        key = "{}.{}".format(testObject.__class__.__name__, testObject.id)
+        key = "{}.{}".format('BaseModel', testObject.id)
         assertIn(key, newFileStorage.keys())
 
     def test_save(self):
-        pass
+        '''
+        unittest the save method
+        '''
+        file = FileStorage()
+        '''
+        shouldn't return anything...
+        '''
+        assertIsNone(file.save())
+
+    def test_reload(self):
+        ''' '''
+        file = FileStorage()
+
+        assertIsInstance(file, FileStorage)
+        assertIsNone(file.reload())
 
 
 if __name__ == '__main__':
