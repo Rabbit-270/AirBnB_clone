@@ -201,12 +201,12 @@ provided
                     for key in ALL_OBJS.keys():
                         if key == KEY:
                             found = True
-                            print(ALL_OBJS[key])
                             foundObject = ALL_OBJS[key]
                             foundObject.ATTRIBUTE = VALUE
                             storage.new(foundObject)
                             storage.save()
                             print("Added")
+                            print(foundObject)
                     if found is not True:
                         print("** instance not found **")
             elif counter == 2:
