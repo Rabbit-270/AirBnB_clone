@@ -132,8 +132,7 @@ provided
                         print("** no instance found **")
                     else:
                         for KEY in OBJECTS.keys():
-                            updateObjectVal = BaseModel(**OBJECTS[KEY])
-                            storage.new(updateObjectVal)
+                            storage.new(OBJECTS[KEY])
                         storage.save()
 
     def do_all(self, argv):
