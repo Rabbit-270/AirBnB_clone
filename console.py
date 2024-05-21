@@ -201,7 +201,7 @@ provided
                 ID = argv[(WHITESPACE_INDICES[0] + 1):]
                 print("{} {}".format(className, ID))
             elif counter == 0:
-                className = argv[:(WHITESPACE_INDICES[0] + 1)]
+                className = argv
                 print("{}".format(className))
 
 
