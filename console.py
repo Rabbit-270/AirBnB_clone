@@ -18,7 +18,7 @@ class HBNBCommand(cmd.Cmd):
         ''' Quit command to exit the program '''
         return True
 
-    prompt = "(hbnb) "
+    prompt = "(hbnb)"
 
     def emptyline(self):
         ''' Executed when no command is entered in the command line '''
