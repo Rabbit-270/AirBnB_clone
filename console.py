@@ -188,7 +188,9 @@ provided
             if counter == 3:
                 className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
-                ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2])]
+                st = (WHITESPACE_INDICES[1] + 1)
+                end = (WHITESPACE_INDICES[2])
+                ATTRIBUTE = argv[st:end]
                 VALUE = argv[(WHITESPACE_INDICES[2] + 2):(len(argv) - 1)]
                 if className != 'BaseModel':
                     print("** class doesn't exist **")
@@ -235,7 +237,7 @@ provided
                 else:
                     KEY = "{}.{}".format(className, ID)
                     ALL_OBJS = storage.all()
-                    found=False
+                    found = False
                     for key in ALL_OBJS.keys():
                         if key == KEY:
                             found = True
