@@ -128,8 +128,8 @@ provided
                         print("** no instance found **")
                     else:
                         for KEY in OBJECTS.keys():
-                                updateObjectVal = BaseModel(**OBJECTS[KEY])
-                                storage.new(updateObjectVal)
+                            updateObjectVal = BaseModel(**OBJECTS[KEY])
+                            storage.new(updateObjectVal)
                         storage.save()
 
 
