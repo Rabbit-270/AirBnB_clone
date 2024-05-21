@@ -80,8 +80,10 @@ provided
                 found = False
                 for key in ALL_OBJS.keys():
                     if key == KEY:
+                        found = True
                         foundObject = ALL_OBJS[key]
                         print(foundObject)
+                        break
                     else:
                         pass
                 if found is False:
