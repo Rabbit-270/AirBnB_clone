@@ -87,6 +87,7 @@ provided
                 print("** no instance found **")
             elif whitespaces == 0:
                 print("** instance id missing **")
+
     def do_destroy(self, argv):
         '''
     Deletes an instance based on the id and class name given
@@ -112,12 +113,12 @@ provided
                 '''
                 both id and class name are provided
                 '''
-                classNameFromCommand = argv[:index]
-                idFromCommand = argv[(index + 1):]
-                if classNameFromCommand != 'BaseModel':
+                classNameFromCmm = argv[:index]
+                idFromCmm = argv[(index + 1):]
+                if classNameFromCmm != 'BaseModel':
                     print("** class doesn't exist **")
                 else:
-                    KeyGenerated = "{}.{}".format(classNameFromCommand, idFromCommand)
+                    KeyGenerated = "{}.{}".format(classNameFromCmm, idFromCmm)
                     OBJECTS = storage.all()
                     for key in OBJECTS.keys():
                         if key == KeyGenerated:
