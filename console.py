@@ -109,7 +109,7 @@ provided
                     break
             if whitespaces == 0:
                 print("** instance id missing **")
-            elif index != -1:
+            else:
                 '''
                 both id and class name are provided
                 '''
@@ -124,12 +124,13 @@ provided
                         if key == KeyGenerated:
                             ObjectFound = True
                             del OBJECTS[KeyGenerated]
-                            for KEY in OBJECTS.keys():
+                    if ObjectFound is not True:
+                        print("** no instance found **")
+                    else:
+                        for KEY in OBJECTS.keys():
                                 updateObjectVal = BaseModel(**OBJECTS[KEY])
                                 storage.new(updateObjectVal)
-                            storage.save()
-            elif ObjectFound is not True:
-                print("** no instance found **")
+                        storage.save()
 
 
 if __name__ == "__main__":
