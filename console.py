@@ -191,6 +191,18 @@ provided
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2] + 1)]
                 VALUE = argv[(WHITESPACE_INDICES[2] + 2):(len(argv) - 1)]
                 print("{} {} {} {}".format(className, ID, ATTRIBUTE, VALUE))
+            elif counter == 2:
+                className = argv[:(WHITESPACE_INDICES[0] + 1)]
+                ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1] + 1)]
+                ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):]
+                print("{} {} {}".format(className, ID, ATTRIBUTE))
+            elif counter == 1:
+                className = argv[:(WHITESPACE_INDICES[0] + 1)]
+                ID = argv[(WHITESPACE_INDICES[0] + 1):]
+                print("{} {}".format(className, ID))
+            elif counter == 0:
+                className = argv[:(WHITESPACE_INDICES[0] + 1)]
+                print("{}".format(className))
 
 
 if __name__ == "__main__":
