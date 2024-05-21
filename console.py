@@ -80,8 +80,7 @@ provided
                 for key in ALL_OBJS.keys():
                     if key == KEY:
                         foundObject = ALL_OBJS[key]
-                        foundObjectInstance = BaseModel(**foundObject)
-                        print(foundObjectInstance)
+                        print(foundObject)
                     else:
                         pass
                 print("** no instance found **")
