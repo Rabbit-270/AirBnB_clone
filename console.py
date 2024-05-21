@@ -41,7 +41,9 @@ and returns the new object's id.
                 print("** class doesn't exist **")
             else:
                 newObject = BaseModel()
-                return newObject.id
+                storage.new(newObject)
+                storage.save()
+                print(newObject.id)
 
     def do_show(self, argv):
         '''
