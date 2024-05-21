@@ -16,12 +16,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, Line):
         ''' Terminate the program using Ctrl+D'''
-        print(prompt)
+        print("(hbnb)")
         exit()
 
     def do_quit(self, line):
         ''' Quit command to exit the program '''
-        print(prompt)
+        print("(hbnb)")
         exit()
 
     prompt = "(hbnb)"
