@@ -86,9 +86,7 @@ provided
             print("** no instance found **")
         elif whitespaces == 0:
             print("** instance id missing **")
-    return
-            
 
-    
-if __name__=="__main__":
+
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
