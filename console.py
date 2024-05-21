@@ -207,7 +207,7 @@ provided
                             found = True
                             foundObject = ALL_OBJS[key]
                             dictionary = foundObject.to_dict()
-                            dictionary.ATTRIBUTE = VALUE
+                            dictionary[ATTRIBUTE] = VALUE
                             foundObject_re = BaseModel(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
