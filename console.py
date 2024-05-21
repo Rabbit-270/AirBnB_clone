@@ -202,11 +202,13 @@ provided
                         if key == KEY:
                             found = True
                             foundObject = ALL_OBJS[key]
-                            foundObject[ATTRIBUTE] = VALUE
-                            storage.new(foundObject)
+                            dictionary = foundObject.to_dict()
+                            dictionary[ATTRIBUTE] = VALUE
+                            foundObject_re = BaseModel(**dictionary)
+                            storage.new(foundObject_re)
                             storage.save()
                             print("Added")
-                            print(foundObject)
+                            print(foundObject_re)
                     if found is not True:
                         print("** instance not found **")
             elif counter == 2:
