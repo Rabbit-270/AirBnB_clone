@@ -202,10 +202,10 @@ provided
                         if key == KEY:
                             found = True
                             foundObject = ALL_OBJS[key]
-                            foundObject ATTRIBUTE = VALUE
+                            foundObject.ATTRIBUTE = VALUE
                             storage.new(foundObject)
                             storage.save()
-                            print("Added!")
+                            print("Added")
                     if found is not True:
                         print("** instance not found **")
             elif counter == 2:
