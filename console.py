@@ -211,7 +211,6 @@ provided
                             foundObject_re = BaseModel(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
-                            print(foundObject_re)
                     if found is not True:
                         print("** instance not found **")
             elif counter == 2:
