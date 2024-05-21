@@ -202,7 +202,7 @@ provided
                         if key == KEY:
                             found = True
                             foundObject = ALL_OBJS[key]
-                            foundObject.ATTRIBUTE = VALUE
+                            foundObject[ATTRIBUTE] = VALUE
                             storage.new(foundObject)
                             storage.save()
                             print("Added")
