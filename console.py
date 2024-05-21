@@ -191,18 +191,65 @@ provided
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2] + 1)]
                 VALUE = argv[(WHITESPACE_INDICES[2] + 2):(len(argv) - 1)]
                 print("{} {} {} {}".format(className, ID, ATTRIBUTE, VALUE))
+                if className != 'BaseModel':
+                    print("** class doesn't exist **")
+                else:
+                    KEY = "{}.{}".format(className, ID)
+                    ALL_OBJS = storage.all()
+                    found=False
+                    foundObject = None
+                    for key in ALL_OBJS.keys():
+                        if key == KEY:
+                            found = True
+                            foundObject = ALL_OBJS[key]
+                            foundObject.ATTRIBUTE = VALUE
+                            storage.new(foundObject)
+                            storage.save()
+                            print(foundObject)
+                    if found is not True:
+                        print("** instance not found **")
             elif counter == 2:
                 className = argv[:(WHITESPACE_INDICES[0] + 1)]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1] + 1)]
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):]
                 print("{} {} {}".format(className, ID, ATTRIBUTE))
+                if className != 'BaseModel':
+                    print("** class doesn't exist **")
+                else:
+                    KEY = "{}.{}".format(className, ID)
+                    ALL_OBJS = storage.all()
+                    found=False
+                    foundObject = None
+                    for key in ALL_OBJS.keys():
+                        if key == KEY:
+                            found = True
+                            foundObject = ALL_OBJS[key]
+                            print("** value missing **")
+                    if found is not True:
+                        print("** instance not found **")
             elif counter == 1:
                 className = argv[:(WHITESPACE_INDICES[0] + 1)]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):]
                 print("{} {}".format(className, ID))
+                if className != 'BaseModel':
+                    print("** class doesn't exist **")
+                else:
+                    KEY = "{}.{}".format(className, ID)
+                    ALL_OBJS = storage.all()
+                    found=False
+                    for key in ALL_OBJS.keys():
+                        if key == KEY:
+                            found = True
+                            print("** attribute name missing **")
+                    if found is not True:
+                        print("** instance not found **")
             elif counter == 0:
                 className = argv
                 print("{}".format(className))
+                if className == 'BaseModel':
+                    print("** instance id missing **")
+                else:
+                    print("** class doesn't exist **")
 
 
 if __name__ == "__main__":
