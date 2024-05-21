@@ -167,6 +167,36 @@ provided
                         print('"', end=',')
                     counter += 1
             print("]")
+def do_update(self, argv):
+    '''
+    Updates an instance using an attribute given as a parameter
+    '''
+    if len(argv) == 0:
+        print("** class name missing **")
+
+def do_update(self, argv):
+    '''
+    Updates an object with a given class name and id.
+    Updates/adds the given attribute using the commandline
+    '''
+    if len(argv) == 0:
+        print("** class name missing **")
+    else:
+        WHITESPACE_INDICES = []
+        startIndex = 0
+        counter = 0
+        for i in range(len(argv)):
+            j = argv.find(" ", startIndex)
+            if j != -1:
+                WHITESPACE_INDICES.push(j)
+                startIndex = j + 1
+                counter += 1
+        if counter == 3:
+            className = argv[:(WHITESPACE_INDICES[0] + 1)]
+            ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1] + 1)]
+            ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2] + 1)]
+            VALUE = argv[(WHITESPACE_INDICES[2] + 1):]
+            print("{} {} {} {}".format(className, ID, ATTRIBUTE, VALUE))
 
 
 if __name__ == "__main__":
