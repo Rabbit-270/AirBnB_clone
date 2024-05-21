@@ -149,10 +149,9 @@ provided
             print("[", end="")
             for key in OBJECTS.keys():
                 if key.find(classFromCommand) != -1:
-                    value = OBJECTS[key]
-                    currIddObject = BaseModel(**value)
+                    currIddObject = OBJECTS[key]
                     print('"', end="")
-                    print(currIddObject)
+                    print(currIddObject, end="")
                     if (counter + 1) == len(OBJECTS):
                         '''
                         counter is on the last element
