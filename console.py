@@ -196,7 +196,7 @@ provided
                 else:
                     KEY = "{}.{}".format(className, ID)
                     ALL_OBJS = storage.all()
-                    found=False
+                    found = False
                     foundObject = None
                     for key in ALL_OBJS.keys():
                         if key == KEY:
@@ -218,7 +218,7 @@ provided
                 else:
                     KEY = "{}.{}".format(className, ID)
                     ALL_OBJS = storage.all()
-                    found=False
+                    found = False
                     foundObject = None
                     for key in ALL_OBJS.keys():
                         if key == KEY:
