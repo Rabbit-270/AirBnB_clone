@@ -167,12 +167,6 @@ provided
                         print('"', end=',')
                     counter += 1
             print("]")
-def do_update(self, argv):
-    '''
-    Updates an instance using an attribute given as a parameter
-    '''
-    if len(argv) == 0:
-        print("** class name missing **")
 
 def do_update(self, argv):
     '''
