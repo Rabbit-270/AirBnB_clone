@@ -127,6 +127,7 @@ provided
                         if key == KeyGenerated:
                             ObjectFound = True
                             del OBJECTS[KeyGenerated]
+                            break
                     if ObjectFound is not True:
                         print("** no instance found **")
                     else:
