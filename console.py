@@ -209,7 +209,7 @@ provided
                     if found is not True:
                         print("** instance not found **")
             elif counter == 2:
-                className = argv[:(WHITESPACE_INDICES[0]]
+                className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):]
                 print("{} {} {}".format(className, ID, ATTRIBUTE))
