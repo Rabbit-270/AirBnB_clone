@@ -131,6 +131,7 @@ provided
                             updateObjectVal = BaseModel(**OBJECTS[KEY])
                             storage.new(updateObjectVal)
                         storage.save()
+
     def do_all(self, argv):
         '''
         Prints all string represenetations of an object
