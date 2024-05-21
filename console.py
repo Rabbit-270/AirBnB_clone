@@ -77,13 +77,15 @@ provided
                 retrieve all objects and search
                 '''
                 ALL_OBJS = storage.all()
+                found = False
                 for key in ALL_OBJS.keys():
                     if key == KEY:
                         foundObject = ALL_OBJS[key]
                         print(foundObject)
                     else:
                         pass
-                print("** no instance found **")
+                if found is False:
+                    print("** no instance found **")
             elif whitespaces == 0:
                 print("** instance id missing **")
 
