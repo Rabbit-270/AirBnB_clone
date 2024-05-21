@@ -131,6 +131,38 @@ provided
                             updateObjectVal = BaseModel(**OBJECTS[KEY])
                             storage.new(updateObjectVal)
                         storage.save()
+    def do_all(self, argv):
+        '''
+        Prints all string represenetations of an object
+        '''
+        if len(argv) != 0 and argv != 'BaseModel':
+            print("** class doesn't exist **")
+        else:
+            classFromCommand = None
+            if len(argv) == 0:
+                classFromCommand = 'BaseModel'
+            else:
+                classFromCommand = argv
+            OBJECTS = storage.all()
+            counter = 0
+            print("[", end="")
+            for key in OBJECTS.keys():
+                if key.find(classFromCommand) != -1:
+                    value = OBJECTS[key]
+                    currIddObject = BaseModel(**value)
+                    print('"', end="")
+                    print(currIddObject)
+                    if (counter + 1) == len(OBJECTS):
+                        '''
+                        counter is on the last element
+                        '''
+                        print('"', end="")
+                    else:
+                        '''
+                        counter is not the last element
+                        '''
+                        print('"', end=',')
+            print("]")
 
 
 if __name__ == "__main__":
