@@ -182,7 +182,7 @@ provided
             for i in range(len(argv)):
                 j = argv.find(" ", startIndex)
                 if j != -1:
-                    WHITESPACE_INDICES.push(j)
+                    WHITESPACE_INDICES.append(j)
                     startIndex = j + 1
                     counter += 1
             if counter == 3:
