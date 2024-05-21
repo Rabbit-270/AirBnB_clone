@@ -16,18 +16,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, Line):
         ''' Terminate the program using Ctrl+D'''
-        print()
+        print(prompt)
         exit()
 
     def do_quit(self, line):
         ''' Quit command to exit the program '''
+        print(prompt)
         exit()
 
     prompt = "(hbnb)"
 
     def emptyline(self):
         ''' Executed when no command is entered in the command line '''
-        pass
+        return 1
 
     def do_create(self, argv):
         '''
