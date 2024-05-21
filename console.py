@@ -144,12 +144,15 @@ provided
                 classFromCommand = 'BaseModel'
             else:
                 classFromCommand = argv
-            OBJECTS = storage.all()
+            OBJECTS_ALL = storage.all()
+            OBJECTS = []
+            for obj in OBJECTS_ALL:
+                OBJECTS.append(obj)
             counter = 0
             print("[", end="")
-            for key in OBJECTS.keys():
+            for key in OBJECTS_ALL.keys():
                 if key.find(classFromCommand) != -1:
-                    currIddObject = OBJECTS[key]
+                    currIddObject = OBJECTS_ALL[key]
                     print('"', end="")
                     print(currIddObject, end="")
                     if (counter + 1) == len(OBJECTS):
@@ -162,6 +165,7 @@ provided
                         counter is not the last element
                         '''
                         print('"', end=',')
+                    counter += 1
             print("]")
 
 
