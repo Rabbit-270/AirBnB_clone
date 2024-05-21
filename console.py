@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         ''' Executed when no command is entered in the command line '''
-        return True
+        return cmd.Cmd.emptyline(self)
 
     def do_create(self, argv):
         '''
