@@ -186,9 +186,9 @@ provided
                     startIndex = j + 1
                     counter += 1
             if counter == 3:
-                className = argv[:(WHITESPACE_INDICES[0] + 1)]
-                ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1] + 1)]
-                ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2] + 1)]
+                className = argv[:(WHITESPACE_INDICES[0])]
+                ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
+                ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2])]
                 VALUE = argv[(WHITESPACE_INDICES[2] + 2):(len(argv) - 1)]
                 print("{} {} {} {}".format(className, ID, ATTRIBUTE, VALUE))
                 if className != 'BaseModel':
@@ -209,8 +209,8 @@ provided
                     if found is not True:
                         print("** instance not found **")
             elif counter == 2:
-                className = argv[:(WHITESPACE_INDICES[0] + 1)]
-                ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1] + 1)]
+                className = argv[:(WHITESPACE_INDICES[0]]
+                ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):]
                 print("{} {} {}".format(className, ID, ATTRIBUTE))
                 if className != 'BaseModel':
@@ -228,7 +228,7 @@ provided
                     if found is not True:
                         print("** instance not found **")
             elif counter == 1:
-                className = argv[:(WHITESPACE_INDICES[0] + 1)]
+                className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):]
                 print("{} {}".format(className, ID))
                 if className != 'BaseModel':
