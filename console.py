@@ -190,7 +190,6 @@ provided
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):(WHITESPACE_INDICES[2])]
                 VALUE = argv[(WHITESPACE_INDICES[2] + 2):(len(argv) - 1)]
-                print("{} {} {} {}".format(className, ID, ATTRIBUTE, VALUE))
                 if className != 'BaseModel':
                     print("** class doesn't exist **")
                 else:
@@ -207,7 +206,6 @@ provided
                             foundObject_re = BaseModel(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
-                            print("Added")
                             print(foundObject_re)
                     if found is not True:
                         print("** instance not found **")
@@ -215,7 +213,6 @@ provided
                 className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):]
-                print("{} {} {}".format(className, ID, ATTRIBUTE))
                 if className != 'BaseModel':
                     print("** class doesn't exist **")
                 else:
@@ -233,7 +230,6 @@ provided
             elif counter == 1:
                 className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):]
-                print("{} {}".format(className, ID))
                 if className != 'BaseModel':
                     print("** class doesn't exist **")
                 else:
@@ -248,7 +244,6 @@ provided
                         print("** instance not found **")
             elif counter == 0:
                 className = argv
-                print("{}".format(className))
                 if className == 'BaseModel':
                     print("** instance id missing **")
                 else:
