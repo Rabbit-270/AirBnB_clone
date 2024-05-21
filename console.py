@@ -13,6 +13,7 @@ class HBNBCommand(cmd.Cmd):
     Our command line
     '''
     CLASSES = ['BaseModel']
+
     def do_EOF(self, Line):
         ''' Terminate the program using Ctrl+D'''
         print()
@@ -21,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, line):
         ''' Quit command to exit the program '''
         exit()
-    
+
     prompt = "(hbnb)"
 
     def emptyline(self):
@@ -41,7 +42,9 @@ and returns the new object's id.
                 print("** class doesn't exist **")
             else:
                 newObject = BaseModel()
-                return newObject.id
+                storage.new(newObject)
+                storage.save()
+                print(newObject.id)
 
     def do_show(self, argv):
         '''
@@ -63,30 +66,28 @@ provided
                     break
                 else:
                     counter += 1
-        if counter == (len(argv) - 1):
-            if argv != 'BaseModel':
-                print("** class doesn't exist **")
-        elif whitespaces != 0:
-            retrievedClassName = argv[:index]
-            retrievedId = argv[(index+1):]
-            KEY = "{}.{}".format(retrievedClassName, retrievedId)
-            '''
-            retrieve all objects and search
-            '''
-            ALL_OBJS = storage.all()
-            for key in ALL_OBJS.keys():
-                if key == KEY:
-                    foundObject = ALL_OBJS[key]
-                    foundObjectInstance = BaseModel(**foundObject)
-                    print(foundObjectInstance)
-                else:
-                    pass
-            print("** no instance found **")
-        elif whitespaces == 0:
-            print("** instance id missing **")
-    return
-            
+            if counter == (len(argv) - 1):
+                if argv != 'BaseModel':
+                    print("** class doesn't exist **")
+            elif whitespaces != 0:
+                retrievedClassName = argv[:index]
+                retrievedId = argv[(index+1):]
+                KEY = "{}.{}".format(retrievedClassName, retrievedId)
+                '''
+                retrieve all objects and search
+                '''
+                ALL_OBJS = storage.all()
+                for key in ALL_OBJS.keys():
+                    if key == KEY:
+                        foundObject = ALL_OBJS[key]
+                        foundObjectInstance = BaseModel(**foundObject)
+                        print(foundObjectInstance)
+                    else:
+                        pass
+                print("** no instance found **")
+            elif whitespaces == 0:
+                print("** instance id missing **")
 
-    
-if __name__=="__main__":
+
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
