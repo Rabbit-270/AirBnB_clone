@@ -214,7 +214,7 @@ provided
                             storage.new(foundObject_re)
                             storage.save()
                     if found is not True:
-                        print("** instance not found **")
+                        print("** no instance found **")
             elif counter == 2:
                 className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
