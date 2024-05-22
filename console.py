@@ -75,18 +75,21 @@ provided
                 '''
                 retrieve all objects and search
                 '''
-                ALL_OBJS = storage.all()
-                found = False
-                for key in ALL_OBJS.keys():
-                    if key == KEY:
-                        found = True
-                        foundObject = ALL_OBJS[key]
-                        print(foundObject)
-                        break
-                    else:
-                        pass
-                if found is False:
-                    print("** no instance found **")
+                if retrievedClassName != 'BaseModel':
+                    print("** class doesn't exist **")
+                else:
+                    ALL_OBJS = storage.all()
+                    found = False
+                    for key in ALL_OBJS.keys():
+                        if key == KEY:
+                            found = True
+                            foundObject = ALL_OBJS[key]
+                            print(foundObject)
+                            break
+                        else:
+                            pass
+                    if found is False:
+                        print("** no instance found **")
             elif whitespaces == 0:
                 print("** instance id missing **")
 
