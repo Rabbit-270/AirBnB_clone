@@ -153,7 +153,7 @@ provided
         else:
             classFromCommand = None
             if len(argv) == 0:
-                classFromCommand = 'User'
+                classFromCommand = 'BaseModel'
             else:
                 classFromCommand = argv
             OBJECTS_ALL = storage.all()
