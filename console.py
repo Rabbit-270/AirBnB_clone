@@ -217,10 +217,9 @@ provided
                             foundObject = ALL_OBJS[key]
                             dictionary = foundObject.to_dict()
                             dictionary[ATTRIBUTE] = VALUE
-                            match className:
-                                case 'User':
+                            if className == 'User':
                                     foundObject_re = User(**dictionary)
-                                case 'BaseModel':
+                            elif className == 'BaseModel':
                                     foundObject_re = BaseModel(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
