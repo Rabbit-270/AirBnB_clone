@@ -43,5 +43,5 @@ class TestUser(unittest.TestCase):
 	    self.assertNotEqual(prev_updated_at, new_updated_at)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
   unittest.main()
