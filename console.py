@@ -12,7 +12,7 @@ class HBNBCommand(cmd.Cmd):
     '''
     Our command line
     '''
-    CLASSES = ['BaseModel']
+    CLASSES = ['BaseModel', 'User']
 
     def do_EOF(self, Line):
         ''' Terminate the program using Ctrl+D'''
@@ -37,7 +37,7 @@ and returns the new object's id.
         if len(argv) == 0:
             print("** class name missing **")
         else:
-            if argv != 'BaseModel':
+            if argv not in CLASSES:
                 print("** class doesn't exist **")
             else:
                 newObject = BaseModel()
