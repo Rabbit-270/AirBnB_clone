@@ -8,6 +8,7 @@ class User(BaseModel):
     '''
     def __init__(self):
         ''' constructor '''
+        BaseModel.__init__()
         self.email = ""
         self.password = ""
         self.first_name = ""
