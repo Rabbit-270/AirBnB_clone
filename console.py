@@ -215,6 +215,7 @@ provided
                             foundObject = ALL_OBJS[key]
                             dictionary = foundObject.to_dict()
                             dictionary[ATTRIBUTE] = VALUE
+                            print(dictionary)
                             if className == 'User':
                                     foundObject_re = User(**dictionary)
                             elif className == 'BaseModel':
