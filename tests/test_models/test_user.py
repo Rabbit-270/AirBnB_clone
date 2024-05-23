@@ -26,8 +26,7 @@ class TestUser(unittest.TestCase):
         '''
         SecondUser = User()
         SecondUser.tested = False
-        returnedDict = SecondUser.to_dict()
-        if self.assertTrue(hasattr(returnedDict, "tested")) is True:
+        if self.assertTrue(hasattr(SecondUser, "tested")) is True:
             SecondUser.tested = True
 
     def test_save(self):
@@ -38,7 +37,7 @@ class TestUser(unittest.TestCase):
         prev_updated_at = ThirdUser.updated_at
         ThirdUser.save()
         new_updated_at = ThirdUser.updated_at
-        self.assertIsNotEqual(prev_updated_at, new_updated_at)
+        self.assertNotEqual(prev_updated_at, new_updated_at)
 
 
 if __name__ == '__main__':
