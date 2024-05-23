@@ -37,7 +37,7 @@ and returns the new object's id.
         if len(argv) == 0:
             print("** class name missing **")
         else:
-            if argv not in CLASSES:
+            if argv not in self.CLASSES:
                 print("** class doesn't exist **")
             else:
                 newObject = BaseModel()
