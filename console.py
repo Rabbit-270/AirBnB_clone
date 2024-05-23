@@ -41,13 +41,12 @@ and returns the new object's id.
             if argv not in self.CLASSES:
                 print("** class doesn't exist **")
             else:
-                match argv:
-                    case 'BaseModel':
+                if argv == 'BaseModel':
                         newObject = BaseModel()
                         storage.new(newObject)
                         storage.save()
                         print(newObject.id)
-                    case 'User':
+                elif argv == 'User':
                         newObject = User()
                         storage.new(newObject)
                         storage.save()
