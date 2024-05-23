@@ -9,13 +9,12 @@ class TestUser(unittest.TestCase):
   unittests to make sure that the
   User class operates accordingly.
   '''
-  FirstUser = User()
-  FirstUser.tested = False
   def test_constructor(self):
     '''
     Unittests for testing the Constructor
     of a User object
     '''
+    FirstUser = User()
     self.assertIs(FirstUser, BaseModel)
     self.assertIs(FirstUser, User)
 
@@ -24,6 +23,8 @@ class TestUser(unittest.TestCase):
     Unittests for testing if the to_dict()
     class method works for User object.
     '''
+    FirstUser = User()
+    FirstUser.tested = False
     returnedDict = FirstUser.to_dict()
     if self.assertTrue(hasattr(FirstUser,"tested")) == True:
       FirstUser.tested = False
@@ -33,6 +34,8 @@ class TestUser(unittest.TestCase):
     Tests if the save() class method
     if it works.
     '''
+    FirstUser = User()
+    FirstUser.tested = False
     prev_updated_at = FirstUser.updated_at
     FirstUser.save()
     new_updated_at = FirstUser.updated_at
