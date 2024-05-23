@@ -167,7 +167,7 @@ provided
                 if key.find(classFromCommand) != -1:
                     classObjects.append(OBJECTS_ALL[key])
             for i in range(len(classObjects)):
-                 currIddObject = OBJECTS_ALL[key]
+                 currIddObject = classObjects[i]
                  print('"', end="")
                  print(currIddObject, end="")
                  if (i + 1) == len(classObjects):
