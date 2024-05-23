@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -40,6 +40,7 @@ class FileStorage:
 
         with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
             json.dump(objectDict, file)
+            file.write("\n")
 
     def reload(self):
         """ """
