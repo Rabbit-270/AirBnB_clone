@@ -6,9 +6,9 @@ class User(BaseModel):
     '''
     Inherits from BaseModel
     '''
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         ''' constructor '''
-        super(User, self).__init__(**kwargs)
+        super().__init__(*args, **kwargs)
         self.email = ""
         self.password = ""
         self.first_name = ""
