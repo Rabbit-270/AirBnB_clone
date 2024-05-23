@@ -2,6 +2,7 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 """
 This module contain the HBNB console
 We use it to interact with the system
@@ -40,10 +41,17 @@ and returns the new object's id.
             if argv not in self.CLASSES:
                 print("** class doesn't exist **")
             else:
-                newObject = BaseModel()
-                storage.new(newObject)
-                storage.save()
-                print(newObject.id)
+                match argv:
+                    case 'BaseModel':
+                        newObject = BaseModel()
+                        storage.new(newObject)
+                        storage.save()
+                        print(newObject.id)
+                    case 'User':
+                        newObject = User()
+                        storage.new(newObject)
+                        storage.save()
+                        print(newObject.id)
 
     def do_show(self, argv):
         '''
@@ -66,7 +74,7 @@ provided
                 else:
                     counter += 1
             if counter == (len(argv) - 1):
-                if argv != 'BaseModel':
+                if argv not in  self.CLASSES:
                     print("** class doesn't exist **")
             elif whitespaces != 0:
                 retrievedClassName = argv[:index]
@@ -75,7 +83,7 @@ provided
                 '''
                 retrieve all objects and search
                 '''
-                if retrievedClassName != 'BaseModel':
+                if retrievedClassName not in self.CLASSES:
                     print("** class doesn't exist **")
                 else:
                     ALL_OBJS = storage.all()
@@ -120,7 +128,7 @@ provided
                 '''
                 classNameFromCmm = argv[:index]
                 idFromCmm = argv[(index + 1):]
-                if classNameFromCmm != 'BaseModel':
+                if classNameFromCmm not in self.CLASSES:
                     print("** class doesn't exist **")
                 else:
                     KeyGenerated = "{}.{}".format(classNameFromCmm, idFromCmm)
@@ -141,12 +149,12 @@ provided
         '''
         Prints all string represenetations of an object
         '''
-        if len(argv) != 0 and argv != 'BaseModel':
+        if len(argv) != 0 and argv not in self.CLASSES:
             print("** class doesn't exist **")
         else:
             classFromCommand = None
             if len(argv) == 0:
-                classFromCommand = 'BaseModel'
+                classFromCommand = 'User'
             else:
                 classFromCommand = argv
             OBJECTS_ALL = storage.all()
@@ -197,7 +205,7 @@ provided
                 end = (WHITESPACE_INDICES[2])
                 ATTRIBUTE = argv[st:end]
                 VALUE = argv[(WHITESPACE_INDICES[2] + 2):(len(argv) - 1)]
-                if className != 'BaseModel':
+                if className not in self.CLASSES:
                     print("** class doesn't exist **")
                 else:
                     KEY = "{}.{}".format(className, ID)
@@ -210,7 +218,11 @@ provided
                             foundObject = ALL_OBJS[key]
                             dictionary = foundObject.to_dict()
                             dictionary[ATTRIBUTE] = VALUE
-                            foundObject_re = BaseModel(**dictionary)
+                            match className:
+                                case 'User':
+                                    foundObject_re = User(**dictionary)
+                                case 'BaseModel':
+                                    foundObject_re = BaseModel(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
                     if found is not True:
@@ -219,7 +231,7 @@ provided
                 className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):(WHITESPACE_INDICES[1])]
                 ATTRIBUTE = argv[(WHITESPACE_INDICES[1] + 1):]
-                if className != 'BaseModel':
+                if className not in self.CLASSES:
                     print("** class doesn't exist **")
                 else:
                     KEY = "{}.{}".format(className, ID)
@@ -236,7 +248,7 @@ provided
             elif counter == 1:
                 className = argv[:(WHITESPACE_INDICES[0])]
                 ID = argv[(WHITESPACE_INDICES[0] + 1):]
-                if className != 'BaseModel':
+                if className not in self.CLASSES:
                     print("** class doesn't exist **")
                 else:
                     KEY = "{}.{}".format(className, ID)
@@ -250,7 +262,7 @@ provided
                         print("** instance not found **")
             elif counter == 0:
                 className = argv
-                if className == 'BaseModel':
+                if className in self.CLASSES:
                     print("** instance id missing **")
                 else:
                     print("** class doesn't exist **")
