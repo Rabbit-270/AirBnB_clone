@@ -162,22 +162,20 @@ provided
                 OBJECTS.append(obj)
             counter = 0
             print("[", end="")
+            classObjects = []
             for key in OBJECTS_ALL.keys():
                 if key.find(classFromCommand) != -1:
-                    currIddObject = OBJECTS_ALL[key]
-                    print('"', end="")
-                    print(currIddObject, end="")
-                    if (counter + 1) == len(OBJECTS):
-                        '''
-                        counter is on the last element
-                        '''
-                        print('"', end="")
-                    else:
-                        '''
-                        counter is not the last element
-                        '''
-                        print('"', end=',')
-                    counter += 1
+                    classObjects.append(OBJECTS_ALL[key])
+            for i in range(len(classObjects)):
+                 currIddObject = OBJECTS_ALL[key]
+                 print('"', end="")
+                 print(currIddObject, end="")
+                 if (i + 1) == len(classObjects):
+                     '''counter is on the last element'''
+                     print('"', end="")
+                 else:
+                    '''counter is not the last element'''
+                    print('"', end=',')
             print("]")
 
     def do_update(self, argv):
