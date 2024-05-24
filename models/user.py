@@ -8,7 +8,7 @@ class User(BaseModel):
     '''
     def __init__(self, *args, **kwargs):
         ''' constructor '''
-        super(User, self).__init__(*args, **kwargs)
+        super(User, self).__init__(**kwargs)
         self.email = ""
         self.password = ""
         self.first_name = ""
