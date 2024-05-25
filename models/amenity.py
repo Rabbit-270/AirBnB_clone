@@ -8,5 +8,10 @@ class Amenity(BaseModel):
     '''
     def __init__(self, *args, **kwargs):
         ''' Constructor '''
-        super(Amenity, self).__init__(*args, **kwargs)
-        self.name = ""
+        if kwargs == {}:
+            super(Amenity, self).__init__(*args, **kwargs)
+            self.name = ""
+        else:
+            for key, value in kwargs.item():
+                self.key = value
+            super(Amenity, self).__init__(*args, **kwargs)

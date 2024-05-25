@@ -10,5 +10,10 @@ class State(BaseModel):
         '''
         Constructor of the State class.
         '''
-        super(State, self).__init__(*args, **kwargs)
-        self.name = ""
+        if kwargs == {}:
+            super(State, self).__init__(*args, **kwargs)
+            self.name = ""
+        else:
+            for key, value in kwargs.items():
+                self.key = value
+            super(State, self).__init__(*args, **kwargs)

@@ -10,6 +10,11 @@ class City(BaseModel):
         '''
         Constructor of this City class.
         '''
-        super(City, self).__init__(*args, **kwargs)
-        self.state_id = ""
-        self.name = ""
+        if kwargs == {}:
+            super(City, self).__init__(*args, **kwargs)
+            self.state_id = ""
+            self.name = ""
+        else:
+            for key, value in kwargs.items():
+                self.key = value
+            super(City, self).__init__(**kwargs)

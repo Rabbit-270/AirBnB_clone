@@ -6,7 +6,12 @@ class Review(BaseModel):
     ''' Review child class inheritting from BaseModel class. '''
     def __init__(self, *args, **kwargs):
         ''' constructor '''
-        super(Review, self).__init__(*args, **kwargs)
-        self.place_id = ""
-        self.user_id = ""
-        self.text = ""
+        if kwargs == {}:
+            super(Review, self).__init__(*args, **kwargs)
+            self.place_id = ""
+            self.user_id = ""
+            self.text = ""
+        else:
+            for key, value in kwargs.items():
+                self.key = value
+            super(Review, self).__init__(*args, **kwargs)
