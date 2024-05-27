@@ -55,6 +55,26 @@ and returns the new object's id.
                     storage.new(newObject)
                     storage.save()
                     print(newObject.id)
+                elif argv == 'State':
+                    newObject = State()
+                    storage.new(newObject)
+                    storage.save()
+                    print(newObject.id)
+                elif argv == 'City':
+                    newObject = City()
+                    storage.new(newObject)
+                    storage.save()
+                    print(newObject.id)
+                elif argv == 'Amenity':
+                    newObject = Amenity()
+                    storage.new(newObject)
+                    storage.save()
+                    print(newObject.id)
+                elif argv == 'Place':
+                    newObject = Place()
+                    storage.new(newObject)
+                    storage.save()
+                    print(newObject.id)
 
     def do_show(self, argv):
         '''
@@ -224,6 +244,15 @@ provided
                                 foundObject_re = User(**dictionary)
                             elif className == 'BaseModel':
                                 foundObject_re = BaseModel(**dictionary)
+                            elif className == 'State':
+                                foundObject_re = State(**dictionary)
+                            elif className == 'City':
+                                foundObject_re = City(**dictionary)
+                            elif className == 'Amenity':
+                                foundObject_re = Amenity(**dictionary)
+                            elif className == 'Place':
+                                foundObject_re = Place(**dictionary)
+
                             storage.new(foundObject_re)
                             storage.save()
                     if found is not True:
