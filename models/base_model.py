@@ -15,7 +15,7 @@ class BaseModel:
         timeFormat = "%Y-%m-%dT%H:%M:%S.%f"
 
         if kwargs:
-            print(kwargs)
+
             for key, val in kwargs.items():
                 if key == "__class__":
                     continue
