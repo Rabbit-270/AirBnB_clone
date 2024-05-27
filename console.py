@@ -17,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     '''
     Our command line
     '''
-    CLASSES = ['BaseModel', 'User', 'State', 'City', 'Amenity','Place']
+    CLASSES = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place']
 
     def do_EOF(self, Line):
         ''' Terminate the program using Ctrl+D'''
@@ -46,35 +46,15 @@ and returns the new object's id.
                 print("** class doesn't exist **")
             else:
                 if argv == 'BaseModel':
-                        newObject = BaseModel()
-                        storage.new(newObject)
-                        storage.save()
-                        print(newObject.id)
+                    newObject = BaseModel()
+                    storage.new(newObject)
+                    storage.save()
+                    print(newObject.id)
                 elif argv == 'User':
-                        newObject = User()
-                        storage.new(newObject)
-                        storage.save()
-                        print(newObject.id)
-				elif argv == 'State':
-						newObject = State()
-                        storage.new(newObject)
-                        storage.save()
-                        print(newObject.id)
-				elif argv == 'City':
-						newObject = City()
-                        storage.new(newObject)
-                        storage.save()
-                        print(newObject.id)
-				elif argv == 'Amenity':
-						newObject = Amenity()
-                        storage.new(newObject)
-                        storage.save()
-                        print(newObject.id)
-				elif argv == 'Place':
-						newObject = Place()
-                        storage.new(newObject)
-                        storage.save()
-                        print(newObject.id)
+                    newObject = User()
+                    storage.new(newObject)
+                    storage.save()
+                    print(newObject.id)
 
     def do_show(self, argv):
         '''
@@ -97,7 +77,7 @@ provided
                 else:
                     counter += 1
             if counter == (len(argv) - 1):
-                if argv not in  self.CLASSES:
+                if argv not in self.CLASSES:
                     print("** class doesn't exist **")
             elif whitespaces != 0:
                 retrievedClassName = argv[:index]
@@ -143,6 +123,7 @@ provided
                     index = counter
                     whitespaces += 1
                     break
+
             if whitespaces == 0:
                 print("** instance id missing **")
             else:
@@ -180,27 +161,27 @@ provided
                 classFromCommand = 'BaseModel'
             else:
                 classFromCommand = argv
-            OBJECTS_ALL = storage.all()
-            OBJECTS = []
-            for obj in OBJECTS_ALL:
-                OBJECTS.append(obj)
-            counter = 0
-            print("[", end="")
-            classObjects = []
-            for key in OBJECTS_ALL.keys():
-                if key.find(classFromCommand) != -1:
-                    classObjects.append(OBJECTS_ALL[key])
-            for i in range(len(classObjects)):
-                 currIddObject = classObjects[i]
-                 print('"', end="")
-                 print(currIddObject, end="")
-                 if (i + 1) == len(classObjects):
-                     '''counter is on the last element'''
-                     print('"', end="")
-                 else:
-                    '''counter is not the last element'''
-                    print('"', end=',')
-            print("]")
+                OBJECTS_ALL = storage.all()
+                OBJECTS = []
+                for obj in OBJECTS_ALL:
+                    OBJECTS.append(obj)
+                counter = 0
+                print("[", end="")
+                classObjects = []
+                for key in OBJECTS_ALL.keys():
+                    if key.find(classFromCommand) != -1:
+                        classObjects.append(OBJECTS_ALL[key])
+                for i in range(len(classObjects)):
+                    currIddObject = classObjects[i]
+                    print('"', end="")
+                    print(currIddObject, end="")
+                    if (i + 1) == len(classObjects):
+                        '''counter is on the last element'''
+                        print('"', end="")
+                    else:
+                        '''counter is not the last element'''
+                        print('"', end=',')
+                print("]")
 
     def do_update(self, argv):
         '''
@@ -239,19 +220,10 @@ provided
                             foundObject = ALL_OBJS[key]
                             dictionary = foundObject.to_dict()
                             dictionary[ATTRIBUTE] = VALUE
-                            print(dictionary)
                             if className == 'User':
-                                    foundObject_re = User(**dictionary)
+                                foundObject_re = User(**dictionary)
                             elif className == 'BaseModel':
-                                    foundObject_re = BaseModel(**dictionary)
-							elif className == 'State':
-									foundObject_re = State(**dictionary)
-							elif className == 'City':
-									foundObject_re = City(**dictionary)
-							elif className == 'Amenity':
-									foundObject_re = Amenity(**dictionary)
-							elif className == 'Place':
-									foundObject_re = Place(**dictionary)
+                                foundObject_re = BaseModel(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
                     if found is not True:
