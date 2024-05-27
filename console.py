@@ -3,6 +3,10 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
 """
 This module contain the HBNB console
 We use it to interact with the system
@@ -13,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
     '''
     Our command line
     '''
-    CLASSES = ['BaseModel', 'User']
+    CLASSES = ['BaseModel', 'User', 'State', 'City', 'Amenity','Place']
 
     def do_EOF(self, Line):
         ''' Terminate the program using Ctrl+D'''
@@ -48,6 +52,26 @@ and returns the new object's id.
                         print(newObject.id)
                 elif argv == 'User':
                         newObject = User()
+                        storage.new(newObject)
+                        storage.save()
+                        print(newObject.id)
+				elif argv == 'State':
+						newObject = State()
+                        storage.new(newObject)
+                        storage.save()
+                        print(newObject.id)
+				elif argv == 'City':
+						newObject = City()
+                        storage.new(newObject)
+                        storage.save()
+                        print(newObject.id)
+				elif argv == 'Amenity':
+						newObject = Amenity()
+                        storage.new(newObject)
+                        storage.save()
+                        print(newObject.id)
+				elif argv == 'Place':
+						newObject = Place()
                         storage.new(newObject)
                         storage.save()
                         print(newObject.id)
@@ -146,7 +170,7 @@ provided
 
     def do_all(self, argv):
         '''
-        Prints all string represenetations of an object
+        Prints all string representations of an object
         '''
         if len(argv) != 0 and argv not in self.CLASSES:
             print("** class doesn't exist **")
@@ -220,6 +244,14 @@ provided
                                     foundObject_re = User(**dictionary)
                             elif className == 'BaseModel':
                                     foundObject_re = BaseModel(**dictionary)
+							elif className == 'State':
+									foundObject_re = State(**dictionary)
+							elif className == 'City':
+									foundObject_re = City(**dictionary)
+							elif className == 'Amenity':
+									foundObject_re = Amenity(**dictionary)
+							elif className == 'Place':
+									foundObject_re = Place(**dictionary)
                             storage.new(foundObject_re)
                             storage.save()
                     if found is not True:
